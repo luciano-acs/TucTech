@@ -1,7 +1,7 @@
 import React from 'react'
 import { CiShoppingCart } from "react-icons/ci";
 
-const CardWidget = () => {
+const CartWidget = () => {
     return (
         <div className='flex justify-end items-center pr-6'>
             <CiShoppingCart className='text-[#e0e4ce] text-3xl text-center'/>
@@ -10,4 +10,4 @@ const CardWidget = () => {
     )
 }
 
-export default CardWidget
+export default CartWidget

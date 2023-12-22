@@ -1,5 +1,5 @@
 import React from 'react'
-import CardWidget from './CardWidget'
+import CartWidget from './CartWidget'
 
 const NavBar = () => {
     return (
@@ -13,7 +13,7 @@ const NavBar = () => {
                     <li className='text-[#e0e4ce]'>Entretenimiento</li>
                 </ul>
             </nav>
-            <CardWidget className="w1/5"/>
+            <CartWidget className="w1/5"/>
         </header>
     )
 }
