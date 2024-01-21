@@ -3,7 +3,7 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({ id, nombre, precio, img, categoria, stock }) => {
     return (
-        <div className='flex flex-row h-72 w-4/5 my-4'>
+        <div className='flex flex-row h-72 w-11/12 my-4'>
             <div className='w-1/2 h-72 flex justify-center rounded-l-3xl bg-white'>
                 <img src={img} alt={nombre} className='rounded-l-3xl' />
             </div>
