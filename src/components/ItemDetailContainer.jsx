@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { getItem } from '../asyncmock'
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
+import { getDoc, doc } from 'firebase/firestore'
+import { db } from '../services/config'
 
 const ItemDetailContainer = () => {
 
@@ -10,12 +11,19 @@ const ItemDetailContainer = () => {
   const {itemId} = useParams()
 
   useEffect(() => {
-    getItem(itemId)
-    .then(res => setProducto(res))
+    const nuevoDoc = doc(db, 'inventario', itemId);
+
+    getDoc(nuevoDoc)
+      .then(res => {
+        const data = res.data()
+        const nuevoProducto = {id: res.id, ...data}
+        setProducto(nuevoProducto)
+      })
+      .catch(err => console.log(err))
   }, [itemId])
 
   return (
-    <div className='w-full bg-[#114D4D] p-12 min-h-screen-100 flex justify-center items-start'>
+    <div className='w-full bg-secondary p-12 min-h-screen-100 flex justify-center items-start'>
       <ItemDetail {...producto}/>
     </div>
   )
