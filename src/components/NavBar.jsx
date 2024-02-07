@@ -26,8 +26,8 @@ const NavBar = () => {
 
     return (
         <header className='bg-[#2d3839] h-16 flex items-center md:flex-row md:justify-between transition-all md:sticky md:top-0'>
-            <FiMenu className='text-white text-5xl pl-4 pt-1 cursor-pointer md:hidden' onClick={handleToggle} />
-            <h1 className='text-primary pl-4 font-semibold text-2xl md:w-1/5'>
+            <FiMenu className='text-white text-5xl pl-4 cursor-pointer md:hidden' onClick={handleToggle} />
+            <h1 className='text-primary pl-4 pb-1 font-semibold text-2xl md:w-1/5'>
                 <Link to="/">TucTech</Link></h1>
             <nav className={`${toggle ? 'absolute top-16 left-0' : 'hidden'} bg-[#2d3839] w-full md:flex md:w-3/5 md:justify-end md:h-full`}>
                 <ul className='py-2 gap-6 h-full md:flex md:py-0'>

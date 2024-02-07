@@ -10,20 +10,21 @@ const Cart = () => {
     if (totalQuantity === 0) {
         return (
             <div className='w-full bg-primary p-12 min-h-screen-100 flex justify-center items-center flex-col'>
-                <h2 className='text-white text-5xl'>NO HAY PRODUCTOS</h2>
+                <h2 className='text-white text-5xl text-center'>NO HAY PRODUCTOS</h2>
                 <Link to="/" className='w-80 h-8 rounded-b-3xl text-center text-xl bg-tertiary text-black hover:w-96 transition-all'>Ver productos</Link>
             </div>
         )
     }
     return (
-        <div className='w-full bg-secondary p-12 min-h-screen-100 max-h-screen flex flex-col lg:flex-row'>
-            <table className='lg:w-3/5 w-full mr-8 max-h-2'>
+        <div className='w-full bg-secondary p-8 min-h-screen-100 flex flex-col lg:flex-row'>
+            <table className='lg:w-3/5 w-full lg:mr-8 max-h-2'>
                 <thead className='h-12 bg-primary'>
                     <tr className='text-primary'>
-                        <th className='text-left pl-4 col-span-2'>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
+                        <th className='text-left pl-4 lg:col-span-2'>Producto</th>
+                        <th className='lg:hidden'>Detalles</th>
+                        <th className='hidden lg:table-cell'>Precio</th>
+                        <th className='hidden lg:table-cell'>Cantidad</th>
+                        <th className='hidden lg:table-cell'>Subtotal</th>
                     </tr>
                 </thead>
                 <tbody className='bg-tertiary max-h-60 overflow-y-auto'>

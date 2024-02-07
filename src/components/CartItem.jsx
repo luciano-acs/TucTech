@@ -28,25 +28,31 @@ const CartItem = ({ item, quantity }) => {
     return (
         <>
             <tr className='h-16 border border-gray-300'>
-                <td className='pl-4 col-span-2 flex flex-row items-center h-16 my-2'>
-                    <img src={item.img} className='rounded-xl h-full w-16 mr-2' />
+                <td className='pl-4 lg:col-span-2 lg:flex lg:flex-row items-center h-16 my-2'>
+                    <img src={item.img} className='hidden rounded-xl h-full w-16 mr-2' />
                     {item.nombre}
                 </td>
-                <td className='text-center'>${(item.precio).toFixed(2)}</td>
-                <td className='text-center'>
+                <td className='lg:hidden flex flex-col justify-start gap-2'>
+                    <p>Precio: ${(item.precio).toFixed(2)}</p>
+                    <p>Cantidad:
+                        <div className='bg-white/45 h-6 min-w-max max-w-24 flex flex-row justify-between items-center rounded-l-xl rounded-r-xl'>
+                            <button className='w-8 h-6 text-center' onClick={onSubstract}>-</button>
+                            <span className='min-w-max h-6 text-black text-center font-semibold transition-transform'>{count}</span>
+                            <button className='w-8 h-6 text-center' onClick={onAdd}>+</button>
+                        </div>
+                    </p>
+                    <p>Subtotal: ${(item.subtotal).toFixed(2)}</p>
+                </td>
+                <td className='text-center hidden lg:table-cell'>${(item.precio).toFixed(2)}</td>
+                <td className='text-center hidden lg:table-cell'>
                     <div className='bg-white/45 h-8 min-w-max max-w-24 flex flex-row justify-center items-center mx-auto rounded-l-xl rounded-r-xl'>
                         <button className='w-12 h-8 text-center' onClick={onSubstract}>-</button>
                         <span className='min-w-max h-8 pt-1 text-black text-center font-semibold transition-transform'>{count}</span>
                         <button className='w-12 h-8 text-center' onClick={onAdd}>+</button>
                     </div>
                 </td>
-                <td className='text-center'>${(item.subtotal).toFixed(2)}</td>
+                <td className='text-center hidden lg:table-cell'>${(item.subtotal).toFixed(2)}</td>
             </tr>
-            {/* <div className='bg-tertiary/85 w-36 h-8 flex flex-row justify-center items-center rounded-xl mr-12 border-black/50 border-2'>
-                <button className='w-12 h-8 rounded-xl  text-center' onClick={onSubstract}>-</button>
-                <span className='w-12 text-black text-center font-semibold transition-transform'>{count}</span>
-                <button className='w-12  h-8 rounded-xl  text-center' onClick={onAdd}>+</button>
-            </div> */}
         </>
     )
 }

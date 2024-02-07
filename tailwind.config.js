@@ -10,7 +10,7 @@ export default {
         'screen-100': 'calc(100vh - 128px)'
       },
       textColor: {
-        'primary': '#E6E6FA',
+        'primary': '#ffffff',
         'secondary': '#6e9987',
         'tertiary': '#114d4d',  
       },
