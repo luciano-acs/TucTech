@@ -34,9 +34,9 @@ const CartItem = ({ item, quantity }) => {
                 </td>
                 <td className='text-center'>${(item.precio).toFixed(2)}</td>
                 <td className='text-center'>
-                    <div className='bg-white/45 h-8 w-36 flex flex-row justify-center items-center mx-auto rounded-l-xl rounded-r-xl'>
+                    <div className='bg-white/45 h-8 min-w-max max-w-24 flex flex-row justify-center items-center mx-auto rounded-l-xl rounded-r-xl'>
                         <button className='w-12 h-8 text-center' onClick={onSubstract}>-</button>
-                        <span className='w-12 h-8 pt-1 text-black text-center font-semibold transition-transform'>{count}</span>
+                        <span className='min-w-max h-8 pt-1 text-black text-center font-semibold transition-transform'>{count}</span>
                         <button className='w-12 h-8 text-center' onClick={onAdd}>+</button>
                     </div>
                 </td>

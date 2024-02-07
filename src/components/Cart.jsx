@@ -16,8 +16,8 @@ const Cart = () => {
         )
     }
     return (
-        <div className='w-full bg-secondary p-12 min-h-screen-100 flex flex-row'>
-            <table className='w-3/5 mr-8 max-h-2'>
+        <div className='w-full bg-secondary p-12 min-h-screen-100 max-h-screen flex flex-col lg:flex-row'>
+            <table className='lg:w-3/5 w-full mr-8 max-h-2'>
                 <thead className='h-12 bg-primary'>
                     <tr className='text-primary'>
                         <th className='text-left pl-4 col-span-2'>Producto</th>
@@ -31,14 +31,13 @@ const Cart = () => {
                         cart.map(prod => <CartItem key={prod.id} {...prod} />)
                     }
                 </tbody>
-            <button className='mt-4 h-8 text-center rounded-3xl py-1 px-12 bg-black text-primary hover:bg-red-900 transition-all mb-2' onClick={clear}>Vaciar Carrito</button>
+            <button className='mt-4 h-8 text-center rounded-3xl py-1 px-12 bg-black text-primary hover:bg-red-900 transition-all mb-2 min-w-max' onClick={clear}>Vaciar Carrito</button>
             </table>
-            <div className='bg-tertiary w-2/5 h-72 rounded-lg py-2 px-8 flex flex-col'>
+            <div className='bg-tertiary w-full mt-4 lg:w-2/5 lg:mt-0 h-72 rounded-lg py-2 px-8 flex flex-col'>
                 <h2 className='text-center text-tertiary text-2xl font-bold border-b-4 border-black/25'>RESUMEN</h2>
                 <h3 className='font-bold mt-4'>Total: ${(total).toFixed(2)}</h3>                
                 <Link to="/checkout" className='h-8 text-center rounded-3xl py-1 px-12 bg-black text-primary hover:bg-primary transition-all mt-auto mb-2 uppercase'>Finalizar Compra</Link>
             </div>
-
         </div>
     )
 }

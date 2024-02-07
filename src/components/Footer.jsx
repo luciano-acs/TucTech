@@ -3,11 +3,12 @@ import { CiTwitter, CiFacebook, CiInstagram } from "react-icons/ci";
 
 const Footer = () => {
     return (
-        <footer className='flex w-full h-16 flex-row justify-between bg-[#2d3839]'>
-            <div className='flex justify-start items-center w-1/2 pl-8'>
+        <footer className='h-16 bg-[#2d3839] flex flex-col justify-center items-center
+        md:flex-row'>
+            <div className='w-full flex justify-center py-1 md:justify-start md:pl-16'>
                 <p className='text-primary'>Todos los derechos reservados</p>
             </div>
-            <div className='flex justify-end items-center w-1/2 pr-8 gap-4'>
+            <div className='w-full flex flex-row justify-center gap-4 mb-2 items-center md:mb-0 md:justify-end md:pr-16'>
                 <a href='https://www.facebook.com'><CiFacebook className='text-primary text-2xl'/></a>
                 <a href='https://www.twitter.com'><CiTwitter className='text-primary text-2xl'/></a>
                 <a href="https://www.instagram.com"><CiInstagram className='text-primary text-2xl'/></a>

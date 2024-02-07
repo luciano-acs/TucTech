@@ -10,14 +10,14 @@ export default {
         'screen-100': 'calc(100vh - 128px)'
       },
       textColor: {
-        'primary': '#e0e4ce',
+        'primary': '#E6E6FA',
         'secondary': '#6e9987',
         'tertiary': '#114d4d',  
       },
       backgroundColor:{
         'primary': '#114d4d',
         'secondary': '#6e9987',
-        'tertiary': '#e0e4ce',
+        'tertiary': '#E6E6FA',
         'nav-footer': '#2d3839'
       }
     },
