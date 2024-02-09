@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import { db } from '../services/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, updateDoc, getDoc, doc } from 'firebase/firestore'
 import { Link, redirect } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -47,16 +47,36 @@ const Checkout = () => {
             }
         }
 
-        const orders = collection(db, 'orders');
-        addDoc(orders, orden)
-            .then(doc => {
-                setOrdenID(doc.id)
-                setAlert(true)
+        Promise.all(
+            orden.items.map(async (item) => {
+                const productoRef = doc(db, 'inventario', item.id.toString());
+                const productoDoc = await getDoc(productoRef);
+                const stockActual = productoDoc.data().stock;
 
+                await updateDoc(productoRef, { stock: stockActual - item.quantity });
+            })
+        )
+            .then(() => {
+                addDoc(collection(db, 'orders'), orden)
+                    .then(doc => {
+                        setOrdenID(doc.id)
+                        setAlert(true)
+                        clear()
+                        setApellido('')
+                        setEmail('')
+                        setNombre('')
+                        setConfirmEmail('')
+                        setTelefono('')
+                        setError('')
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        setError('Ocurrio un error al generar la orden')
+                    })
             })
             .catch(err => {
                 console.log(err)
-                setError('Ocurrio un error al generar la orden')
+                setError('Ocurrio un error al actualizar el stock')
             })
     }
 
@@ -72,38 +92,18 @@ const Checkout = () => {
                 denyButtonText: "Imprimir orden"
             })
                 .then((result) => {
-                    if (result.isConfirmed) {
-                        setOrdenID('')
-                        setAlert(false)
-                        clear()
-                        setApellido('')
-                        setEmail('')
-                        setNombre('')
-                        setConfirmEmail('')
-                        setTelefono('')
-                        setError('')
-                    } else if (result.isDenied) {
-                        setOrdenID('')
-                        setAlert(false)
-                        clear()
-                        setApellido('')
-                        setEmail('')
-                        setNombre('')
-                        setConfirmEmail('')
-                        setTelefono('')
-                        setError('')
-                        console.log("Impriendo orden...")
+                    if (result.isDenied) {
+                        console.log("Imprimiendo")
                     }
                 })
         }
-
     }, [alert])
 
     if (cart.length === 0) {
         return (
             <div className='w-full bg-primary p-12 min-h-screen-100 flex justify-center items-center flex-col'>
                 <h2 className='text-white text-5xl'>CARRITO VACIO</h2>
-                <Link to="/" className='w-80 h-8 rounded-b-3xl text-center text-xl bg-tertiary text-black hover:w-96 transition-all'>Ver productos</Link>
+                <Link to="/" className='w-80 h-8 rounded-b-3xl text-center text-xl bg-tertiary text-black hover:w-96 transition-all'>Seguir comprando</Link>
             </div>
         )
     } else {
@@ -132,15 +132,11 @@ const Checkout = () => {
                         <input type="email" placeholder="Confirme su email" value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} className='w-1/2 lg:w-1/4 px-2 rounded-md focus:outline-[#114d4d] focus:outline-double bg-[#114d4d]/20 text-black placeholder:text-[#114d4d]' />
                         <label htmlFor="" className='py-2'>Telefono</label>
                         <input type="text" placeholder="Ingrese su teléfono" value={telefono} onChange={(e) => setTelefono(e.target.value)} className='w-1/2 lg:w-1/4 px-2 rounded-md focus:outline-[#114d4d] focus:outline-double bg-[#114d4d]/20 text-black placeholder:text-[#114d4d]' />
-
                         {
                             error && <p className='py-2 text-red-900 font-bold'>{error}</p>
                         }
                         <button type="submit" className='h-8 text-center rounded-3xl py-1 px-12 bg-black text-primary hover:bg-primary transition-all mb-2 mt-6 uppercase w-min'>Finalizar Orden</button>
                     </div>
-                    {
-
-                    }
                 </form>
             </div>
         )

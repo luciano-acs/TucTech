@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 
 //objeto con la informacion de la conexion que incluye la clave de la aplicacion
 const firebaseConfig = {
-    apiKey: "AIzaSyC-dwixQUrXMHIsKTLNQzuJ1ze2j9KZBh0",
+    apiKey: import.meta.env.VITE_API_KEY_FIREBASE_CONFIG,
     authDomain: "tuc-tech.firebaseapp.com",
     projectId: "tuc-tech",
     storageBucket: "tuc-tech.appspot.com",

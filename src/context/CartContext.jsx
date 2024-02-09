@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
 
     const substractItem = (item, quantity) => {
         const productoExistente = cart.find(producto => producto.item.id === item.id);
-        console.log(productoExistente)
+        
         if (productoExistente) {
             const carritoActualizado = cart.map(producto => {
                 if (producto.item.id === item.id) {
@@ -57,23 +57,23 @@ export const CartProvider = ({ children }) => {
     }
 
     const removeItem = (itemId) => {
-        const productoEliminado = cart.find(producto => producto.id === itemId);
-        const carritoActualizado = cart.filter(producto => producto.id !== itemId);
+        const productoEliminado = cart.find(producto => producto.item.id === itemId);
+        const carritoActualizado = cart.filter(producto => producto.item.id !== itemId);
 
         setCart(carritoActualizado);
         setTotalQuantity(prev => prev - productoEliminado.quantity);
-        setTotal(prev => prev - (productoEliminado.precio * productoEliminado.quantity));
+        setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.quantity));
     }
+
+    useEffect(() => {
+        console.log(total)
+    }, [total])
 
     const clear = () => {
         setCart([]);
         setTotal(0);
         setTotalQuantity(0);
     }
-
-    useEffect(() => {
-        console.log(cart)
-    }, [cart])
 
     return (
         <CartContext.Provider value={{ cart, total, totalQuantity, addItem, removeItem, clear, substractItem }}>

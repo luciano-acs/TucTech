@@ -17,7 +17,7 @@ export default {
       backgroundColor:{
         'primary': '#114d4d',
         'secondary': '#6e9987',
-        'tertiary': '#E6E6FA',
+        'tertiary': '#ffffff',
         'nav-footer': '#2d3839'
       }
     },
