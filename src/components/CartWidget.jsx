@@ -11,7 +11,11 @@ const CartWidget = () => {
                         md:ml-4'>
             <Link to='/cart' className='flex flex-row gap-1'>
                 <CiShoppingCart className='text-primary text-3xl text-center' />
-                <p className='text-primary text-lg text-center px-1 pt-0.5'>{totalQuantity}</p>
+                {
+                    totalQuantity > 0 &&
+                    <p className='text-primary text-lg text-center px-1 pt-0.5'>{totalQuantity}</p>                
+                }
+                
             </Link>
             
         </div>
