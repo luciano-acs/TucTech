@@ -17,7 +17,7 @@ const ItemCount = ({ inicial, stock, agregar }) => {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center gap-4 mt-24 mb-8
+        <div className='flex flex-col items-center justify-center gap-4 p-4
         lg:flex-row lg:justify-between'>
             <div className='bg-tertiary/85 w-36 h-8 flex flex-row justify-center items-center rounded-xl border-black/50 border-2'>
                 <button className='w-12 h-8 rounded-xl text-center' onClick={onSubstract}>-</button>

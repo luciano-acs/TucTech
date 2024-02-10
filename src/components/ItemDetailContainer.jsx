@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
   }, [itemId])
 
   return (
-    <div className='w-full bg-secondary p-12 min-h-screen-100 flex justify-center items-start'>
+    <div className='w-full bg-secondary p-12 min-h-screen max-h-max flex justify-center items-start'>
       <ItemDetail {...producto}/>
     </div>
   )

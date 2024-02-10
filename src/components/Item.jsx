@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Item = ({ id, nombre, precio, img, categoria }) => {
+const Item = ({ id, nombre, precio, img }) => {
 
     return (
         <div className='group flex flex-col items-center w-72 my-4 rounded-3xl hover:shadow-lg transition duration-200 ease-in-out hover:shadow-black hover:-translate-y-0.5'>

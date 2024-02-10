@@ -65,10 +65,6 @@ export const CartProvider = ({ children }) => {
         setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.quantity));
     }
 
-    useEffect(() => {
-        console.log(total)
-    }, [total])
-
     const clear = () => {
         setCart([]);
         setTotal(0);

@@ -19,7 +19,13 @@ export default {
         'secondary': '#6e9987',
         'tertiary': '#ffffff',
         'nav-footer': '#2d3839'
-      }
+      },
+      width:{
+        '100': '400px'
+      },
+      height:{
+        '100': '400px'
+      },
     },
   },
   plugins: [],
