@@ -7,7 +7,6 @@ const CartItem = ({ item, quantity }) => {
     const [count, setCount] = useState(quantity)
     const { addItem, substractItem, removeItem } = useContext(CartContext)
 
-    // verificar lo del stock
     const onAdd = () => {
         if (count < 10) {
             addItem(item, 1)

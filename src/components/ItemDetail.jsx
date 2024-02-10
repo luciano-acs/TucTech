@@ -59,21 +59,3 @@ const ItemDetail = ({ id, nombre, precio, img, descripcion, stock }) => {
 }
 
 export default ItemDetail
-
-{/* <div className='flex flex-row h-72 w-11/12 my-4'>
-            <div className='w-1/2 h-72 flex justify-center rounded-l-3xl bg-white'>
-                <img src={img} alt={nombre} className='rounded-l-3xl' />
-            </div>
-            <div className='flex flex-col items-center justify-center py-4 px-2 bg-primary w-1/2 h-72'>
-                <div className='flex flex-col items-center justify-center h-64'>
-                    <p className='text-primary'>{id}</p>
-                    <h2 className='text-primary'>{nombre}</h2>
-                    <p className='text-primary'>Precio: {precio}</p>
-                    <p className='text-primary'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, adipisci.</p>
-                    <p className='text-primary'>{stock}</p>
-                </div>                
-                {
-                    agregarCantidad > 0 ? (<Link to='/cart'> Terminar compra </Link>) : (<ItemCount inicial={1}stock={stock} agregar={handleCantidad} />)
-                }
-            </div>
-        </div> */}

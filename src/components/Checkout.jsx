@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import { db } from '../services/config'
 import { collection, addDoc, updateDoc, getDoc, doc } from 'firebase/firestore'
-import { Link, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { LiaSpinnerSolid } from "react-icons/lia";
 
